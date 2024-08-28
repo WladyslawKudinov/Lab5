@@ -20,27 +20,87 @@ import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 
 /**
- *
- * @author Мария
+ * This class represents the fight logic in the game.
  */
 public class Fight {
-
+    /**
+     * The human player.
+     */
     private Player human;
+
+    /**
+     * The enemy player.
+     */
     private Player enemy;
+
+    /**
+     * Utility class for changing text labels.
+     */
     private ChangeTexts change = new ChangeTexts();
+
+    /**
+     * Array representing the kind of attack.
+     */
     private int kind_attack[] = {0};
+
+    /**
+     * Array representing experience points required for each level.
+     */
     private int experiences[] = {40, 90, 180, 260, 410};
+
+    /**
+     * Factory for creating enemies.
+     */
     private EnemyFabric fabric = new EnemyFabric();
+
+    /**
+     * Round counter.
+     */
     public int i = 1;
+
+    /**
+     * Attack index.
+     */
     private int k = -1;
+
+    /**
+     * Stun status.
+     */
     private int stun = 0;
+
+    /**
+     * Random value for determining actions.
+     */
     private double v = 0.0;
-    
+
+    /**
+     * Total number of locations.
+     */
     private int locationsCount;
+
+    /**
+     * Current location count.
+     */
     private int currentLocationsCount = 0;
+
+    /**
+     * Total number of levels.
+     */
     private int levelCount;
+
+    /**
+     * Current level count.
+     */
     private int currentLevelCount;
 
+    /**
+     * Selects next "move" (meaning action) for the players and updates their status based on their actions.
+     *
+     * @param p1 the first player
+     * @param p2 the second player
+     * @param l the label for the first player
+     * @param l2 the label for the second player
+     */
     public void Move(Player p1, Player p2, JLabel l, JLabel l2) {
         if (stun == 1) {
             p1.setAttack(-1);
@@ -142,7 +202,33 @@ public class Fight {
         }
         
     }
-
+    /**
+     * Executes a hit action between the human and enemy players.
+     *
+     * @param human the human player
+     * @param enemy the enemy player
+     * @param a the attack type
+     * @param label the label for the human player
+     * @param label2 the label for the enemy player
+     * @param dialog the dialog to display the result
+     * @param label3 the label to display the result
+     * @param action the character action
+     * @param pr1 the progress bar for the human player
+     * @param pr2 the progress bar for the enemy player
+     * @param dialog1 the dialog for the first result
+     * @param dialog2 the dialog for the second result
+     * @param frame the frame of the game
+     * @param results the list of results
+     * @param label4 the label for additional information
+     * @param label5 the label for additional information
+     * @param label6 the label for additional information
+     * @param label7 the label for additional information
+     * @param label8 the label for additional information
+     * @param items the array of items available to the player
+     * @param rb the radio button for item selection
+     * @param optionBox the option box for level up
+     * @param newLevelLabel the label for new level
+     */
     public void Hit(Player human, Player enemy, int a, JLabel label,
             JLabel label2, JDialog dialog, JLabel label3, CharacterAction action,
             JProgressBar pr1, JProgressBar pr2, JDialog dialog1,
@@ -199,7 +285,18 @@ public class Fight {
             }
         }
     }
-
+    /**
+     * Ends the current round of the fight.
+     *
+     * @param human the human player
+     * @param enemy the enemy player
+     * @param dialog the dialog to display the result
+     * @param label the label to display the result
+     * @param action the character action
+     * @param items the items array
+     * @param optionBox the option box for level up
+     * @param newLevelLabel the label for new level
+     */
     public void EndRound(Player human, Player enemy, JDialog dialog, JLabel label,
             CharacterAction action, Items[] items, JComboBox optionBox, JLabel newLevelLabel ) {
 
@@ -235,7 +332,19 @@ public class Fight {
         
 
     }
-
+    /**
+     * Ends the final round of the fight.
+     *
+     * @param human the human player
+     * @param action the character action
+     * @param results the list of results
+     * @param dialog1 the dialog for the first result
+     * @param dialog2 the dialog for the second result
+     * @param frame the frame of the game
+     * @param label1 the label for additional information
+     * @param label2 the label for additional information
+     * @param items the array of items available to the player
+     */
     public void EndFinalRound(Human human, CharacterAction action,
             ArrayList<Result> results, JDialog dialog1, JDialog dialog2, JFrame frame,
             JLabel label1, JLabel label2, Items[] items) {
@@ -273,19 +382,29 @@ public class Fight {
         }
         frame.dispose();
         }
-        
-            
-        
-        
-       
-        
-    
 
+    /**
+     * Resets the attack array.
+     *
+     * @return the reset attack array
+     */
     public int[] ResetAttack() {
         int a[] = {0};
         return a;
     }
-
+    /**
+     * Starts a new round of the fight.
+     *
+     * @param human the human player
+     * @param label the label for the human player
+     * @param pr1 the progress bar for the human player
+     * @param pr2 the progress bar for the enemy player
+     * @param label2 the label for the enemy player
+     * @param text the text label
+     * @param label3 the label for additional information
+     * @param action the character action
+     * @return the new enemy player
+     */
     public Player NewRound(Player human, JLabel label, JProgressBar pr1,
             JProgressBar pr2, JLabel label2, JLabel text, JLabel label3, CharacterAction action) {
         this.human = human;
@@ -313,9 +432,11 @@ public class Fight {
         
         return enemy;
     }
-    
-    
 
+
+    /**
+     * Prepares the locations and rounds for the fight.
+     */
     public void prepareLocationAndRounds() {
         if (currentLocationsCount < locationsCount) {
             
@@ -326,20 +447,36 @@ public class Fight {
         }
 
     }
-
+    /**
+     * Gets the current location count.
+     *
+     * @return the current location count
+     */
     public int getCurrentLocationsCount() {
         return currentLocationsCount;
     }
-    
+    /**
+     * Sets the total number of locations.
+     *
+     * @param locationsCount the total number of locations
+     */
     
     public void setLocationsCount(int locationsCount) {
         this.locationsCount = locationsCount;
     }
-    
+    /**
+     * Sets the human player.
+     *
+     * @param human the human player
+     */
     public void setHuman(Human human) {
         this.human = human;
     }
-    
+    /**
+     * Sets the enemy player.
+     *
+     * @param enemy the enemy player
+     */
     public void setEnemy(Player enemy) {
         this.enemy = enemy;
     }

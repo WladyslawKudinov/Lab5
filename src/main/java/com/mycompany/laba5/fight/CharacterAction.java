@@ -11,7 +11,10 @@ import com.mycompany.laba5.player.Human;
 import com.mycompany.laba5.player.Items;
 
 
-
+/**
+ * The `CharacterAction` class contains methods for managing character actions
+ * such as adding points, leveling up, updating health, and using items.
+ */
 public class CharacterAction {
 
     private  int experience_for_next_level = 40;
@@ -24,7 +27,9 @@ public class CharacterAction {
     EnemyFabric fabric = new EnemyFabric();
 
     private Player enemyy = null;
-
+    /**
+     * Initializes the array of enemy characters.
+     */
     public void setEnemyes() {
         enemyes[0] = fabric.create(0, 0);
         enemyes[1] = fabric.create(1, 0);
@@ -33,11 +38,23 @@ public class CharacterAction {
         enemyes[4] = fabric.create(4, 0);
         enemyes[5] = fabric.create(4, 0);
     }
-
+    /**
+     * Returns the array of enemy characters.
+     *
+     * @return the array of enemy characters
+     */
     public Player[] getEnemyes() {
         return this.enemyes;
     }
-
+    /**
+     * Chooses a random enemy and updates the UI components with the enemy's information.
+     *
+     * @param label the label to display the enemy's picture
+     * @param label2 the label to display the enemy's name
+     * @param text the label to display the enemy's damage
+     * @param label3 the label to display the enemy's health
+     * @return the chosen enemy character
+     */
     public Player ChooseEnemy(JLabel label, JLabel label2, JLabel text, JLabel label3) {
         int i = (int) (Math.random() * 4);
         ImageIcon icon1 = null;
@@ -62,7 +79,17 @@ public class CharacterAction {
         label3.setText(Integer.toString(enemyy.getHealth()) + "/" + Integer.toString(enemyy.getMaxHealth()));
         return enemyy;
     }
-
+    /**
+     * Chooses a boss enemy and updates the UI components with the boss's information.
+     *
+     * @param label the label to display the boss's picture
+     * @param label2 the label to display the boss's name
+     * @param text the label to display the boss's damage
+     * @param label3 the label to display the boss's health
+     * @param i the index of the boss in the array of enemies
+     * @param human the player character
+     * @return the chosen boss character
+     */
     public Player ChooseBoss(JLabel label, JLabel label2, JLabel text, JLabel label3, int i, Player human) {
 
         label2.setText("Heil (босс)");
@@ -79,7 +106,17 @@ public class CharacterAction {
         label3.setText(Integer.toString(enemyy.getHealth()) + "/" + Integer.toString(enemyy.getMaxHealth()));
         return enemyy;
     }
-
+    /**
+     * Determines the enemy's behavior based on random chance and probability factors.
+     *
+     * @param k1 the probability factor for the first behavior
+     * @param k2 the probability factor for the second behavior
+     * @param k3 the probability factor for the third behavior
+     * @param k4 the probability factor for the fourth behavior
+     * @param i the random chance value
+     * @param isWizard whether the enemy is a wizard
+     * @return an array representing the chosen behavior
+     */
     public int[] EnemyBehavior(int k1, int k2, int k3, int k4, double i, Boolean isWizard) {
         int arr[] = null;
         if (i < k1 * 0.01) {
@@ -96,7 +133,13 @@ public class CharacterAction {
         }
         return arr;
     }
-
+    /**
+     * Chooses the enemy's behavior based on the type of enemy and random chance.
+     *
+     * @param enemy the enemy character
+     * @param action the CharacterAction instance
+     * @return an array representing the chosen behavior
+     */
     public int[] ChooseBehavior(Player enemy, CharacterAction action) {
         int arr[] = null;
         double i = Math.random();
@@ -117,7 +160,12 @@ public class CharacterAction {
         }
         return arr;
     }
-
+    /**
+     * Updates the health progress bar for the player character.
+     *
+     * @param player the player character
+     * @param progress the progress bar to update
+     */
     public void HP(Player player, JProgressBar progress) {
 
         if (player.getHealth() >= 0) {
@@ -126,11 +174,19 @@ public class CharacterAction {
             progress.setValue(0);
         }
     }
-    
+    /**
+     * Uses the player's weakness (currently not implemented).
+     */
     public void useWeakness() {
         
     }
-
+    /**
+     * Adds points to the human character based on their current health.
+     *
+     * @param human the human character
+     * @param enemyes the array of enemy characters
+     * @return true if the human character levels up, false otherwise
+     */
     public Boolean AddPoints(Human human, Player[] enemyes) {
         switch (human.getLevel()) {
             case 0:
@@ -172,7 +228,12 @@ public class CharacterAction {
         
         return isLevelUp;
     }
-
+    /**
+     * Adds points to the human character when fighting a boss.
+     *
+     * @param human the human character
+     * @param enemyes the array of enemy characters
+     */
     public void AddPointsBoss(Human human, Player[] enemyes) {
         switch (human.getLevel()) {
             case 2:
@@ -196,7 +257,14 @@ public class CharacterAction {
             }
         
     }
-
+    /**
+     * Adds items to the player's inventory based on random chance.
+     *
+     * @param k1 the probability factor for the first item
+     * @param k2 the probability factor for the second item
+     * @param k3 the probability factor for the third item
+     * @param items the array of items available to the player
+     */
     public void AddItems(int k1, int k2, int k3, Items[] items) {
         double i = Math.random();
         if (i < k1 * 0.01) {
@@ -209,7 +277,11 @@ public class CharacterAction {
             items[2].setCount(1);
         }
     }
-
+    /**
+     * Updates the health and damage of the human character based on their level.
+     *
+     * @param human the human character
+     */
     public void NewHealthHuman(Human human) {
         int hp = 0;
         int damage = 0;
@@ -234,7 +306,12 @@ public class CharacterAction {
         human.setMaxHealth(hp);
         human.setDamage(damage);
     }
-
+    /**
+     * Updates the health and damage of the enemy character based on the human character's level.
+     *
+     * @param enemy the enemy character
+     * @param human the human character
+     */
     public void NewHealthEnemy(Player enemy, Human human) {
         int hp = 0;
         int damage = 0;
@@ -260,7 +337,15 @@ public class CharacterAction {
         enemy.setDamage((int) enemy.getDamage() * damage / 100);
         enemy.setLevel();
     }
-
+    /**
+     * Uses an item from the player's inventory.
+     *
+     * @param human the player character
+     * @param items the array of items available to the player
+     * @param name the name of the item to use
+     * @param dialog the dialog to display if the item is not available
+     * @param dialog1 the dialog to close if the item is used successfully
+     */
     public void UseItem(Player human, Items[] items, String name, JDialog dialog, JDialog dialog1) {
         switch (name) {
             case "jRadioButton1":

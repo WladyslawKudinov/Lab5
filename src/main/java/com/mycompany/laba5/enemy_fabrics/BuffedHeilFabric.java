@@ -6,9 +6,16 @@ import com.mycompany.laba5.player.Player;
 
 
 
-
+/**
+ * This class implements the EnemyFabricInterface to create BuffedHeil enemies.
+ */
 public class BuffedHeilFabric implements EnemyFabricInterface{
-    
+    /**
+     * Creates a BuffedHeil enemy based on the given parameter.
+     *
+     * @param i the parameter to determine the type of BuffedHeil enemy
+     * @return the created BuffedHeil enemy
+     */
     @Override
     public Player create(int i) {
         Player enemy;

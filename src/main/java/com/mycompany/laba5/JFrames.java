@@ -16,20 +16,51 @@ import javax.swing.JOptionPane;
 
 
 /**
+ * The JFrames class represents the main frame of the game application.
+ * It initializes and manages the game's user interface components, including
+ * dialogs, buttons, labels, and progress bars. It also handles user interactions
+ * and game logic such as starting a new game, attacking, defending, and using items.
  *
- * @author Мария
+ * The class extends javax.swing.JFrame and utilizes various Swing components
+ * to create a graphical user interface for the game.
+ *
+ * @see javax.swing.JFrame
+ * @see javax.swing.JButton
+ * @see javax.swing.JLabel
+ * @see javax.swing.JProgressBar
+ * @see javax.swing.JDialog
+ * @see javax.swing.JTable
+ * @author Wladyslaw Baza The Great
  */
 public class JFrames extends javax.swing.JFrame {
-    
+    /**
+     * The Game instance representing the current game.
+     */
     Game game = new Game();
+
+    /**
+     * The Human player instance representing the human player.
+     */
     Human human = null;
+
+    /**
+     * The Player enemy instance representing the current enemy.
+     */
     Player enemy = null;
+
+    /**
+     * An array of Items representing the items available to the player.
+     */
     Items[] items = new Items[3];
+
+    /**
+     * A string representing the name of the selected button.
+     */
     String nameButton = "";
 
-    
+
     /**
-     * Creates new form JFrame
+     * Creates new form JFrame and initializes the components.
      */
     public JFrames() {
         initComponents();
@@ -54,13 +85,14 @@ public class JFrames extends javax.swing.JFrame {
         items[2]=new Items("Крест возрождения",0);
 
     }
-    
 
-    
-    
-    
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+
+
+
+
+    /**
+     * Initializes the components of the JFrame.
+     */
     void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
@@ -838,8 +870,10 @@ public class JFrames extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-
+    }
+    /**
+     * Prepares the dialogs used in the game.
+     */
     private void prepareDialogs() {
         inputLocationsDialog.setSize(418, 148);
         inputLocationsDialog.setLocationRelativeTo(null);
@@ -850,9 +884,12 @@ public class JFrames extends javax.swing.JFrame {
         newLevelLabel.setVisible(false);
         
     }
-    
-    
-    
+
+    /**
+     * Handles the action event for starting a new game.
+     *
+     * @param evt the action event
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         inputLocationsDialog.setVisible(true);
         attackBtn.setEnabled(true);
@@ -873,7 +910,11 @@ public class JFrames extends javax.swing.JFrame {
         enemyHPProgressBar.setMaximum(enemy.getMaxHealth());*/
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    /**
+     * Handles the action event for attacking.
+     *
+     * @param evt the action event
+     */
     private void attackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attackBtnActionPerformed
         game.fight.Hit( human, enemy, 1,enemyHPPoints, hpPoints, jDialog1, 
                 jLabel18, game.action, playerHPProgressBar, enemyHPProgressBar, jDialog2, 
@@ -883,7 +924,11 @@ public class JFrames extends javax.swing.JFrame {
         checkAndDisableButtons() ;
         
     }//GEN-LAST:event_attackBtnActionPerformed
-
+    /**
+     * Handles the action event for defending.
+     *
+     * @param evt the action event
+     */
     private void defendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defendBtnActionPerformed
         game.fight.Hit( human, enemy, 0,enemyHPPoints, hpPoints, jDialog1, 
                 jLabel18, game.action, playerHPProgressBar, enemyHPProgressBar, jDialog2, 
@@ -892,7 +937,11 @@ public class JFrames extends javax.swing.JFrame {
         
         checkAndDisableButtons() ;
     }//GEN-LAST:event_defendBtnActionPerformed
-
+    /**
+     * Handles the action event for proceeding to the next step.
+     *
+     * @param evt the action event
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
             switch(chooseOptionBox.getSelectedItem().toString()) {
@@ -929,7 +978,9 @@ public class JFrames extends javax.swing.JFrame {
         }    
         
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    /**
+     * Checks and disables buttons based on the game state.
+     */
     private void checkAndDisableButtons() {
         if (playerHPProgressBar.getValue() == 0 || enemyHPProgressBar.getValue() == 0) {
             attackBtn.setEnabled(false);
@@ -943,11 +994,19 @@ public class JFrames extends javax.swing.JFrame {
             weakBtn.setEnabled(true);
         }
     }
-    
+    /**
+     * Handles the action event for the text field.
+     *
+     * @param evt the action event
+     */
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
+    /**
+     * Handles the action event for ending the game and updating the top results.
+     *
+     * @param evt the action event
+     */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         try {
             game.EndGameTop(human, jTextField1, jTable1);
@@ -957,29 +1016,53 @@ public class JFrames extends javax.swing.JFrame {
         jDialog2.dispose();
         jTextField1.setText("");
     }//GEN-LAST:event_jButton6ActionPerformed
-
+    /**
+     * Handles the action event for closing the results dialog.
+     *
+     * @param evt the action event
+     */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         jDialog3.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
-
+    /**
+     * Handles the action event for viewing the results table.
+     *
+     * @param evt the action event
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         game.WriteToTable(jTable1);
         jDialog3.setVisible(true);
         jDialog3.setBounds(100, 100, 580, 450);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    /**
+     * Handles the action event for closing the game over dialog.
+     *
+     * @param evt the action event
+     */
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         jDialog4.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
-
+    }
+    /**
+     * Handles the action event for selecting the first radio button.
+     *
+     * @param evt the action event
+     */
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
-
+    /**
+     * Handles the action event for selecting the second radio button.
+     *
+     * @param evt the action event
+     */
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
-
+    /**
+     * Handles the action event for using an item.
+     *
+     * @param evt the action event
+     */
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         if(jRadioButton1.isSelected()){
             nameButton="jRadioButton1";
@@ -995,16 +1078,28 @@ public class JFrames extends javax.swing.JFrame {
         hpPoints.setText(human.getHealth() + "/" + human.getMaxHealth());
         game.change.BagText(items, jRadioButton1, jRadioButton2, jRadioButton3);
     }//GEN-LAST:event_jButton9ActionPerformed
-
+    /**
+     * Handles the action event for opening the items dialog.
+     *
+     * @param evt the action event
+     */
     private void itemsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemsBtnActionPerformed
         jDialog5.setVisible(true);
         jDialog5.setBounds(300, 200, 430, 350);
     }//GEN-LAST:event_itemsBtnActionPerformed
-
+    /**
+     * Handles the action event for closing the item usage dialog.
+     *
+     * @param evt the action event
+     */
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         jDialog6.dispose();
     }//GEN-LAST:event_jButton11ActionPerformed
-
+    /**
+     * Handles the action event for confirming the number of locations.
+     *
+     * @param evt the action event
+     */
     private void confirmCountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmCountButtonActionPerformed
        try {
            
@@ -1039,11 +1134,21 @@ public class JFrames extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(rootPane, "Вы ввели отрицательное число. Число локаций должно быть положительным", "Ошибка",  JOptionPane.ERROR_MESSAGE);
        }
     }//GEN-LAST:event_confirmCountButtonActionPerformed
-
+    /**
+     * Handles the action event for the text field where the number of locations is input.
+     *
+     * @param evt the action event
+     */
     private void inputLocNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputLocNumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputLocNumberActionPerformed
-
+    /**
+     * Handles the action event for the weak attack button.
+     * This method is triggered when the weak attack button is pressed.
+     * It performs a weak attack on the enemy and updates the game state accordingly.
+     *
+     * @param evt the action event
+     */
     private void weakBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weakBtnActionPerformed
         game.fight.Hit( human, enemy, 2,enemyHPPoints, hpPoints, jDialog1, 
                 jLabel18, game.action, playerHPProgressBar, enemyHPProgressBar, jDialog2, 
@@ -1054,6 +1159,9 @@ public class JFrames extends javax.swing.JFrame {
     }//GEN-LAST:event_weakBtnActionPerformed
 
     /**
+     * The main method to start the application.
+     * It sets the look and feel of the application to Nimbus and creates and displays the main frame.
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {

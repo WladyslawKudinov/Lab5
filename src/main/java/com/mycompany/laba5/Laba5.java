@@ -2,9 +2,17 @@ package com.mycompany.laba5;
 
 
 import javax.swing.*;
-
+/**
+ * The Laba5 class serves as the main entry point for the application.
+ * It initializes the game and sets up the necessary components.
+ */
 public class Laba5 {
 
+    /**
+     * The main method which serves as the entry point for the application.
+     *
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
