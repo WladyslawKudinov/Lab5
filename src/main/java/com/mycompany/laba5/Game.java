@@ -86,7 +86,7 @@ public class Game {
      */
     public void WriteToExcel() throws IOException{
         XSSFWorkbook book = new XSSFWorkbook();
-        XSSFSheet sheet = book.createSheet("Результаты ТОП 10");
+        XSSFSheet sheet = book.createSheet("Поминки по погибшим:");
         XSSFRow r = sheet.createRow(0);
         r.createCell(0).setCellValue("№");
         r.createCell(1).setCellValue("Имя");

@@ -9,10 +9,12 @@ package com.mycompany.laba5;
 import com.mycompany.laba5.player.Human;
 import com.mycompany.laba5.player.Items;
 import com.mycompany.laba5.player.Player;
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 
 /**
@@ -177,7 +179,10 @@ public class JFrames extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         playerPicture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        playerPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Player.jpg"))); // NOI18N
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("/Player.jpg"));
+        Image scaledImage = originalIcon.getImage().getScaledInstance(300, 350, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        playerPicture.setIcon(scaledIcon); // NOI18N
         playerPicture.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel2.add(playerPicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(618, 259, 245, 250));
 
@@ -267,7 +272,7 @@ public class JFrames extends javax.swing.JFrame {
         fightLabel.setFont(new java.awt.Font("Comic Sans MS", 3, 36)); // NOI18N
         fightLabel.setForeground(new java.awt.Color(0, 0, 153));
         fightLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fightLabel.setText("FIGHT");
+        fightLabel.setText("БРАНЬ");
         fightLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel2.add(fightLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 6, 205, 64));
 
@@ -286,13 +291,13 @@ public class JFrames extends javax.swing.JFrame {
         experienceLabel.setBackground(new java.awt.Color(255, 255, 255));
         experienceLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         experienceLabel.setForeground(new java.awt.Color(128, 92, 31));
-        experienceLabel.setText("experience");
+        experienceLabel.setText("мудрость");
         jPanel2.add(experienceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 110, -1, -1));
 
         pointsLabel.setBackground(new java.awt.Color(255, 255, 255));
         pointsLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         pointsLabel.setForeground(new java.awt.Color(128, 92, 31));
-        pointsLabel.setText("points");
+        pointsLabel.setText("сказанья");
         jPanel2.add(pointsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 110, -1, -1));
 
         expCountLabel.setBackground(new java.awt.Color(255, 255, 255));
@@ -325,7 +330,7 @@ public class JFrames extends javax.swing.JFrame {
 
         playerName.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         playerName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        playerName.setText("Игрок");
+        playerName.setText("Слоняра Наш");
         jPanel2.add(playerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, 118, 24));
 
         jLabel29.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
@@ -365,7 +370,7 @@ public class JFrames extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(114, 218, 142));
         jButton5.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setText("Дальше");
+        jButton5.setText("Вперьод!");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -380,7 +385,7 @@ public class JFrames extends javax.swing.JFrame {
         newLevelLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         newLevelLabel.setForeground(new java.awt.Color(0, 0, 0));
         newLevelLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        newLevelLabel.setText("У ВАС НОВЫЙ УРОВЕНЬ!!!");
+        newLevelLabel.setText("СЛАВЯНСКИЙ ЗАЖИМ ПРЕДКАМИ!!!");
         jPanel3.add(newLevelLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 240, 369, 28));
 
         jDialog1.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 677, 551));
@@ -390,7 +395,7 @@ public class JFrames extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 0, 0));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("Победа на вашей стороне");
+        jLabel20.setText("Супостат упал, вы - нет!");
 
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
@@ -481,7 +486,7 @@ public class JFrames extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(51, 51, 51));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("Таблица рекордов");
+        jLabel23.setText("Сыскали гибель");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -564,11 +569,11 @@ public class JFrames extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 0, 0));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("Победа на вашей стороне");
+        jLabel24.setText("Тугарин одолел вас");
 
         jLabel25.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel25.setText("К сожалению, Ваш результат не попал в топ 10");
+        jLabel25.setText("К сожалению, результат не попал в летопись");
 
         jButton8.setBackground(new java.awt.Color(153, 153, 255));
         jButton8.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
@@ -797,12 +802,12 @@ public class JFrames extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Mortal Kombat");
+        jLabel1.setText("Сеча на Руси");
 
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jButton1.setText("Начать новую игру");
+        jButton1.setText("Вмазать супостату!");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -810,7 +815,7 @@ public class JFrames extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jButton2.setText("Посмотреть таблицу \nрезультатов");
+        jButton2.setText("Посмотреть могильный \nкамень");
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

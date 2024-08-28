@@ -50,10 +50,10 @@ public class ChangeTexts {
         label6.setText(Integer.toString(enemy.getMaxHealth()) + "/" + Integer.toString(enemy.getMaxHealth()));
         label7.setText(Double.toString(human.getDamage()));
         if (i % 2 == 1) {
-            label8.setText("Your turn");
+            label8.setText("Дубинь");
         }
         else{
-            label8.setText(enemy.getName()+"'s turn");
+            label8.setText(enemy.getName()+" дубинит");
         }
         /*rb1.setText(items[0].getName()+", "+items[0].getCount()+" шт");
         rb2.setText(items[1].getName()+", "+items[1].getCount()+" шт");
@@ -97,10 +97,10 @@ public class ChangeTexts {
      */
     public void EndGameText(Human human, JLabel label){
         if(human.getWin()==12){
-            label.setText("Победа на вашей стороне");
+            label.setText("И рухнул супостатушка!");
         }
         else {
-            label.setText("Победа не на вашей стороне");
+            label.setText("Пал богатырь.");
         }
     }
     /**

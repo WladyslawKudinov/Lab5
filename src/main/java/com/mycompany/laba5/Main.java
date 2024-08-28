@@ -1,12 +1,15 @@
 package com.mycompany.laba5;
 
 
-import javax.swing.*;
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
+
 /**
- * The Laba5 class serves as the main entry point for the application.
+ * The Main class serves as the main entry point for the application.
  * It initializes the game and sets up the necessary components.
  */
-public class Laba5 {
+public class Main {
 
     /**
      * The main method which serves as the entry point for the application.
@@ -30,14 +33,25 @@ public class Laba5 {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JFrames.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFrames().setVisible(true);
-            }
-        });
+        // Play background music
+        new Thread(() -> playBackgroundMusic("src/main/resources/game_sound.wav")).start();
+
+        // Create and display the form
+        java.awt.EventQueue.invokeLater(() -> new JFrames().setVisible(true));
+    }
+
+    public static void playBackgroundMusic(String filePath) {
+        try {
+            File audioFile = new File(filePath);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            clip.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
     }
 }
 

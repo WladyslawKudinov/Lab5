@@ -304,7 +304,7 @@ public class Fight {
         dialog.setBounds(300, 150, 700, 600);
         if (human.getHealth() > 0) {
             
-            label.setText("You win");
+            label.setText("Пинка под зад!");
             ((Human) human).setWin();
 
             if (enemy instanceof BuffedHeil) {
@@ -348,12 +348,12 @@ public class Fight {
     public void EndFinalRound(Human human, CharacterAction action,
             ArrayList<Result> results, JDialog dialog1, JDialog dialog2, JFrame frame,
             JLabel label1, JLabel label2, Items[] items) {
-        String text = "Победа не на вашей стороне";
+        String text = "Вас вбили в землю!";
          
         if (human.getHealth() > 0) {
             human.setWin();
             action.AddPoints(human, action.getEnemyes());
-            text = "Победа на вашей стороне";
+            text = "Убёг супостат!";
         }
          boolean top = false;
         if (results == null) {
