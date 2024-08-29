@@ -303,8 +303,9 @@ public class CharacterAction {
                 damage = 6;
                 break;
         }
-        human.setMaxHealth(hp);
-        human.setDamage(damage);
+        human.setMaxHealth((int) human.getHealth() * 4 * hp / 100);
+        human.setDamage((int) human.getDamage() * damage / 100);
+        human.setLevel();
     }
     /**
      * Updates the health and damage of the enemy character based on the human character's level.

@@ -954,7 +954,7 @@ public class JFrames extends javax.swing.JFrame {
                     human.setDamage(10 + human.getLevel());
                     break;
                 case "Увиличить общее количество здоровья":
-                    human.setMaxHealth(human.getLevel() * 10);
+                    human.setHealth(human.getHealth() * 2);
                     break;
                 case "Выбрать усиление":
                     if (chooseOptionBox.isVisible())
